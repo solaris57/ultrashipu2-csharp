@@ -1,7 +1,8 @@
+// Have fun :) - Solaris
 using System;
 using System.IO.Ports;
 using System.Text;
-//Solaris
+
 namespace UltrashipU2
 {
     class Program
@@ -40,11 +41,12 @@ namespace UltrashipU2
                     double Weigh;
                     if (double.TryParse(Encoding.ASCII.GetString(buffer, 2, bytesRead - 2), out Weigh))
                     {
-                        Console.WriteLine("Peso: {0} g", Weigh);
+                        Console.WriteLine("Peso: {0}", Weigh);
+                        //Note: You could add the measure unit of your choice here.
                     }
                     else
                     {
-                        Console.WriteLine("Error al decodificar");
+                        Console.WriteLine("Decode error");
                     }
                 }
                 else if (response.StartsWith("47-4B-03"))
