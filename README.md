@@ -57,12 +57,29 @@ Once the 10 byte-long buffer is set, it's ready to be read, by using a simple wh
 ## 03. Decoding
 ---
 The scale sends different types of hex codes to represent its current status:
-* FF : Power button pressed
-* FC : Reboot (Power button held)
-* 00 : OFF
-* 01 : ON
-* 02 : SEND button pressed
-* 0B-44 : Incoming weigh data.
+| Code | Status|
+|-----------|--------------------------|
+| FF        | Power button pressed     |
+| FC        | Reboot (Power button held)|
+| 00        | OFF                      |
+| 01        | ON                       |
+| 02        | SEND button pressed      |
+| 0B-44     | Incoming weigh data      |
+
+
+Since the scale can change the unit of measurement by pressing the M1 and M2 buttons, the data received by the computer when changing these values is reflected as follows: XX-XX-03, where the value 03 represents the end of the data transmission, and XX is replaced by the following values:
+
+| Code | Measure unit|
+|-----------|---------|
+| 4B        | Kg|
+| 47        | g|
+| 50        | lb|
+| 4F        | oz|
+| 4C        | lb:oz|
+
+
+> For example, if the program returns the string "4B-4F-03," it means that the weight on the scale is being represented as Kg to oz.
+
 
 ## 04. License
 ---
@@ -80,9 +97,9 @@ Esta documentación está destinada a ser utilizada en un sistema Windows y como
 El código fuente está pensado para ser editado y compilado según las necesidades del usuario.
 ## 01. Puerto serie
 ---
-Para conectar la báscula, es necesario configurar el puerto serie con estos parámetros que se necesitan para la comunicación serie:
+Para conectar la báscula, es necesario configurar el puerto serie con estos parámetros para la comunicación serie:
 
-1. Interfaz: La báscula utiliza un puerto USB y aparecerá como un puerto COM en tu sistema. Deberás identificar a qué puerto está conectado y establecer este valor en consecuencia en su código. En mi caso, la báscula está conectada a COM4.
+1. Interfaz: La báscula utiliza un puerto USB y aparecerá como un puerto COM en tu sistema. Deberás identificar a qué puerto está conectado y establecer este valor en el código. En mi caso, la báscula está conectada al puerto COM4.
 
 2. Velocidad en baudios: La velocidad en baudios predeterminada para la báscula es 9600, que es la velocidad a la que se transmite la información a través de la conexión serie.
 
@@ -95,7 +112,7 @@ La definición del puerto serie debería parecerse a esto:
 ```csharp
 SerialPort port = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
 ```
-También se recomienda agregar un tiempo de espera, sin embargo, no es obligatorio.
+Puedes agregar un tiempo de espera, sin embargo, no es obligatorio.
 ```csharp
 port.ReadTimeout = 1000;
 ```
@@ -126,12 +143,27 @@ Una vez que se establece el buffer de 10 bytes de longitud, los datos están lis
 ---
 La báscula envía diferentes tipos de datos en hexadecimal para representar su estado actual:
 
-* FF : Botón de encendido presionado
-* FC : Reinicio (Botón de encendido mantenido)
-* 00 : APAGADO
-* 01 : ENCENDIDO
-* 02 : Botón SEND presionado
-* 0B-44 : Entrada de datos de peso
+| Código | Estado                              |
+|--------|-------------------------------------|
+| FF     | Botón de encendido presionado        |
+| FC     | Reinicio (Botón de encendido mantenido) |
+| 00     | APAGADO                             |
+| 01     | ENCENDIDO                           |
+| 02     | Botón SEND presionado               |
+| 0B-44  | Entrada de datos de peso            |
+
+
+Ya que la báscula puede cambiar la unidad de medida al presionar los botones M1 y M2, los datos que recibe el ordenador al cambiar estos valores se reflejan de la siguiente manera: XX-XX-03, en donde el valor 03 representa el final del envío de datos y XX se sustituye por los valores a continuación:
+
+| Código | Unidad |
+|--------|--------|
+| 4B     | Kg     |
+| 47     | g      |
+| 50     | lb     |
+| 4F     | oz     |
+| 4C     | lb:oz  |
+
+> Por ejemplo, si el programa devuelve la cadena 4B-4F-03, significa que el peso en la báscula se está representando como Kg a oz.
 
 ## 04. Licencia
 ---
