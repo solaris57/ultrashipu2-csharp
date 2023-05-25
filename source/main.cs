@@ -48,7 +48,7 @@ namespace UltrashipU2
                             Console.WriteLine("Decode error");
                         }
                         break;
-                    case "47-4B-03": //Update this vaule! My scale was set to g and Kg
+                    case "47-4B-03": //Update this value! My scale was set to g and Kg, check README
                         Console.WriteLine("---End of data transmission---");
                         break;
                     default:
