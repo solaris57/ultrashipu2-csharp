@@ -3,7 +3,7 @@
 
 ## 00. About the author and project
 ---
-Hello, my name is Solaris and I'm not a programming expert. I created this project as a hobby and to hopefully help others save time during their research. If you have any questions or feedback about this project, feel free to reach out to me on Discord at solaris#7753.
+Hello, my name is Solaris and I'm not a programming expert. I created this project as a hobby and to hopefully help others save time during their research. If you have any questions or feedback about this project, feel free to reach out to me on Discord at "ethernet.".
 
 This documentation is intended to be used on a Windows system, and to be a starting point or a guide to a bigger project.
 
@@ -90,7 +90,7 @@ This project is released under the [MIT License](https://opensource.org/licenses
 
 ## 00. Acerca del autor y del proyecto
 ---
-Hola, mi nombre es Solaris y no soy una experta en programación. Creé este proyecto como un pasatiempo y con la esperanza de ayudar a otros a ahorrar tiempo durante su investigación. Si tienes alguna pregunta o comentario sobre este proyecto, no dudes en ponerte en contacto conmigo en Discord: solaris#7753.
+Hola, mi nombre es Solaris y no soy una experta en programación. Creé este proyecto como un pasatiempo y con la esperanza de ayudar a otros a ahorrar tiempo durante su investigación. Si tienes alguna pregunta o comentario sobre este proyecto, no dudes en ponerte en contacto conmigo en Discord: "ethernet.".
 
 Esta documentación está destinada a ser utilizada en un sistema Windows y como punto de partida o guía para un proyecto más grande.
 
